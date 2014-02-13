@@ -1,0 +1,27 @@
+<div ng-include="'partials/navbar'"></div>
+
+<div class="row marketing">
+  <form name="create-pub" class="form-horizontal" ng-repeat="pub in publications">
+    <span>{{pub}}</span><br/>
+    <label class="radio-inline"><input type="radio" ng-model="puntuation" value="1">1</label>
+    <label class="radio-inline"><input type="radio" ng-model="puntuation" value="2">2</label>
+    <label class="radio-inline"><input type="radio" ng-model="puntuation" value="3">3</label>
+    <label class="radio-inline"><input type="radio" ng-model="puntuation" value="4">4</label>
+    <label class="radio-inline"><input type="radio" ng-model="puntuation" value="5">5</label>
+    <button class="btn btn-primary" type="button" ng-click="vote(pub, puntuation)" ng-disabled="!puntuation">Vote</button>
+  </form>
+  <ul class="publications list-group">
+    <li class="publication list-group-item" ng-repeat="pub in pubs">
+      <span>{{pub.url}}</span>
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="vote in pub.votes">
+          <span class="badage">{{vote.val}}</span>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="footer">
+  <p>xidmex ranking</p>
+</div>

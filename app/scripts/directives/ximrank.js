@@ -3,16 +3,16 @@
 angular.module('xRankApp')
   .directive('ximRank', function () {
     return {
-      template: '<form name="create-pub" class="xim-rank">'+
+      template: '<fieldset name="create-pub" class="xim-rank"><legend>Please Vote</legend>'+
     		'<span ng-repeat="puntuation in puntuations">'+
     			'<input type="radio" id="rate_{{$index}}" ng-model="$parent.val" value="{{$index}}" ng-change="$parent.vote()" ng-hide="$index == 0", ng-checked="$index == 0">'+
-    			'<label for="rate_{{$index}}"></label>'+
+    			'<label for="rate_{{$index}}" ng-class="{checked: $index < $parent.val}"></label>'+
     		'</span>'+
-  			'<span>{{average}}/{{count}}</span>'+
+  			'<span>{{average}} ({{count}} votes)</span>'+
   			'<style>'+
   				'.xim-rank {};'+
   			'</style>'+
-  		'</form>',
+  		'</fieldset>',
       restrict: 'E',
       replace: true,
       scope: {},

@@ -89,3 +89,63 @@ body {
         border-bottom: 0;
     }
 }
+
+.xim-rank > span {
+    float:left;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.xim-rank > span:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.xim-rank > span:not(:checked) > label {
+    float:right;
+    width:22px;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:18px;
+    line-height:1.2;
+    color:#ddd;
+    //text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.xim-rank > span:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.xim-rank > span > input:checked ~ label {
+    color: #f70;
+    //text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.xim-rank > span:not(:checked) > label:hover,
+.xim-rank > span:not(:checked) > label:hover ~ label {
+    color: gold;
+    //text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+.xim-rank .checked {
+    color: gold!important;
+    //text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5)!important;
+}
+
+.xim-rank > span > input:checked + label:hover,
+.xim-rank > span > input:checked + label:hover ~ label,
+.xim-rank > span > input:checked ~ label:hover,
+.xim-rank > span > input:checked ~ label:hover ~ label,
+.xim-rank > span > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    //text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.xim-rank > span > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}

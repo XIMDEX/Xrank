@@ -11,8 +11,16 @@ angular.module('xRankApp', [
       .when('/', {
         templateUrl: 'partials/main',
         controller: 'MainCtrl'
-      })
-      .otherwise({
+      }).when('/pub_1', {
+        templateUrl: 'partials/main',
+        controller: 'MainCtrl'
+      }).when('/pub_2', {
+        templateUrl: 'partials/main',
+        controller: 'MainCtrl'
+      }).when('/pub_3', {
+        templateUrl: 'partials/main',
+        controller: 'MainCtrl'
+      }).otherwise({
         redirectTo: '/'
       });
       

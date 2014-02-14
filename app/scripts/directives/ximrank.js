@@ -3,44 +3,43 @@
 angular.module('xRankApp')
   .directive('ximRank', function () {
     return {
-      template: '<form name="create-pub" class="form-horizontal" ng-repeat="pub in publications">
-    		<span>{{pub}}</span><br/>
-    		<label class="radio-inline"><input type="radio" ng-model="puntuation" value="1">1</label>
-    		<label class="radio-inline"><input type="radio" ng-model="puntuation" value="2">2</label>
-    		<label class="radio-inline"><input type="radio" ng-model="puntuation" value="3">3</label>
-    		<label class="radio-inline"><input type="radio" ng-model="puntuation" value="4">4</label>
-    		<label class="radio-inline"><input type="radio" ng-model="puntuation" value="5">5</label>
-    		<button class="btn btn-primary" type="button" ng-click="vote(pub, puntuation)" ng-disabled="!puntuation">Vote</button>
-  		</form>',
+      template: '<form name="create-pub" class="xim-rank">'+
+    		'<span ng-repeat="puntuation in puntuations">'+
+    			'<input type="radio" id="rate_{{$index}}" ng-model="$parent.val" value="{{$index}}" ng-change="$parent.vote()" ng-hide="$index == 0", ng-checked="$index == 0">'+
+    			'<label for="rate_{{$index}}"></label>'+
+    		'</span>'+
+  			'<span>{{average}}/{{count}}</span>'+
+  			'<style>'+
+  				'.xim-rank {};'+
+  			'</style>'+
+  		'</form>',
       restrict: 'E',
       replace: true,
-      controller: ['$scope', '$http', '$cookies', function ($scope, $http, $cookies) {
-	    $scope.publications = [
-	    	'http://mongodb.com',
-	    	'http://nodejs.com',
-	    	'http://angularjs.com'
-	    ];
-	    // $http.get('api/votes').success(function(data){
-	    // 	console.log(data);
-	    // });
-	    $scope.vote = function(pub, val){
-	    	
-	    	if (pub && val) {
-		    	$http.post('api/vote', {data:{publication:pub, val: val}}).success(function(data){
-		    		$scope.refreshPubs();
+      scope: {},
+      controller: ['$scope', '$http', '$window', function ($scope, $http, $window) {
+	    $scope.puntuations = [1,2,3,4,5,6];
+	    $scope.val = 0;
+	    $scope.url = $window.location.href;
+	    
+	    var refreshValorations = function(){
+	    	$http.post('api/publication', {publication:$scope.url}).success(function(data){
+	    		console.log(data);
+	    		if (data && data.publication) {
+	    			$scope.average = data.publication.average;
+	    			$scope.count = data.publication.count;
+	    			$scope.val = data.publication.user_val;
+	    		}
+	    	});
+	    };
+	    refreshValorations();
+	    $scope.vote = function(){
+	    	if ($scope.url && $scope.val) {
+		    	$http.post('api/vote', {publication:$scope.url, val: $scope.val}).success(function(data){
+		    		if (data && data.notice)
+		    			refreshValorations();
 		    	});
 		   }
 	    };
-	    $scope.refreshPubs = function(){
-	    	$http.get('api/publications').success(function(publications){
-		    	if (publications){
-		    		$scope.pubs = publications;
-		    	}
-		    });	
-	    };
-	  }],
-      link: function postLink(scope, element, attrs) {
-        element.text('this is the ximRank directive');
-      }
+	  }]
     };
   });

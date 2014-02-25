@@ -24,7 +24,6 @@ angular.module('xRankApp')
 					if (data && data.publication) {
 						$scope.average = parseFloat(data.publication.average);
 						$scope.count = data.publication.count;
-						$scope.val = data.publication.user_val;
 					}
 				});
 			};

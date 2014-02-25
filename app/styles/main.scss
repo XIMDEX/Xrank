@@ -89,11 +89,33 @@ body {
         border-bottom: 0;
     }
 }
-
+//xim rank
+span.xim-rank {
+    display: inline-block;
+    vertical-align: middle;
+}
 .xim-rank > span {
     float:left;
 }
-
+.xim-rank .xim-rank-star{
+    width:22px;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    font-size:18px;
+    line-height:1.2;
+    color:#ddd;
+    &:before {
+        content: '★';   
+    }
+}
+.xim-rank .xim-rank-star:nth-child(odd) {
+  
+}
+.xim-rank .xim-rank-star:nth-child(even) {
+    position: absolute;
+    width: 11px;
+}
 /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
    follow these rules. Every browser that supports :checked also supports :not(), so
    it doesn’t make the test unnecessarily selective */

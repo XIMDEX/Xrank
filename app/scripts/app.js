@@ -12,17 +12,19 @@ angular.module('xRankApp', [
         templateUrl: 'partials/main',
         controller: 'MainCtrl'
       }).when('/pub_1', {
-        templateUrl: 'partials/main',
-        controller: 'MainCtrl'
+        templateUrl: 'partials/publication',
+        controller: 'PublicationCtrl'
       }).when('/pub_2', {
-        templateUrl: 'partials/main',
-        controller: 'MainCtrl'
+        templateUrl: 'partials/publication',
+        controller: 'PublicationCtrl'
       }).when('/pub_3', {
-        templateUrl: 'partials/main',
-        controller: 'MainCtrl'
+        templateUrl: 'partials/publication',
+        controller: 'PublicationCtrl'
+      }).when('/pub_4', {
+        templateUrl: 'partials/publication',
+        controller: 'PublicationCtrl'
       }).otherwise({
         redirectTo: '/'
-      });
-      
+      });  
     $locationProvider.html5Mode(true);
   });

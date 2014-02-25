@@ -9,20 +9,15 @@ angular.module('xRankApp', [
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'partials/main',
-        controller: 'MainCtrl'
+        templateUrl: 'partials/main'
       }).when('/pub_1', {
-        templateUrl: 'partials/publication',
-        controller: 'PublicationCtrl'
+        templateUrl: 'partials/publication'
       }).when('/pub_2', {
-        templateUrl: 'partials/publication',
-        controller: 'PublicationCtrl'
+        templateUrl: 'partials/publication'
       }).when('/pub_3', {
-        templateUrl: 'partials/publication',
-        controller: 'PublicationCtrl'
+        templateUrl: 'partials/publication'
       }).when('/pub_4', {
-        templateUrl: 'partials/publication',
-        controller: 'PublicationCtrl'
+        templateUrl: 'partials/publication'
       }).otherwise({
         redirectTo: '/'
       });  

@@ -14,13 +14,13 @@ angular.module('xRankApp')
 		scope: {
 			anchorHref: '@href'
 		},
-		controller: ['$scope', '$attrs', '$http', '$window','apiUrl', function ($scope, $attrs, $http, $window,apiUrl) {
+		controller: ['$scope', '$attrs', '$http', '$window','urlHelper', function ($scope, $attrs, $http, $window,urlHelper) {
 			$scope.puntuations = [];
 			for (var i=1; i<=5; i+=0.5) {
 				$scope.puntuations.push(i);
 			}
 			var refreshValorations = function(publication){
-				$http.post(apiUrl+'/api/publication', {publication:publication}).success(function(data){
+				$http.post(urlHelper.apiUrl()+'/api/publication', {publication:urlHelper.normalizeUrl(publication)}).success(function(data){
 					if (data && data.publication) {
 						$scope.average = parseFloat(data.publication.average);
 						$scope.count = data.publication.count;
@@ -35,7 +35,6 @@ angular.module('xRankApp')
 				$scope.publicationUrl = $window.location.href;
 			}
 			$scope.$on('voted', function(event, data){
-				console.log("voted", data);
 				if (data.publication === $scope.publicationUrl)
 					refreshValorations($scope.publicationUrl);
 			});

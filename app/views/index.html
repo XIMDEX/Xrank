@@ -49,12 +49,19 @@
         <script src="scripts/controllers/navbar.js"></script>
         <script src="scripts/directives/ximRanker.js"></script>
         <script src="scripts/directives/ximRank.js"></script>
-        <script>
-          angular.module('xRankApp')
-            .config(function (apiUrlProvider) {
-              apiUrlProvider.setUrl('http://localhost:9000')
-            });
-        </script>
+
+        <script src="scripts/plugins/jquery-xrank.js"></script>
+        
         <!-- endbuild -->
+    <script>
+      angular.module('xRankApp')
+        .config(function (urlHelperProvider) {
+          urlHelperProvider.setApiUrl('http://serene-mesa-8983.herokuapp.com');
+          // Removes /xx_XX/
+          urlHelperProvider.setUrlTrimPattern(/\/[a-z]{2}_[A-Z]{2}?(?=\/)/);
+          // Removes -idxx-
+          //urlHelperProvider.setUrlTrimPattern(/-id[a-zA-Z]{2}-/);
+        });
+    </script>
 </body>
 </html>

@@ -15,13 +15,15 @@ angular.module('xRankApp')
 		restrict: 'E',
 		replace: true,
 		scope: {},
-		controller: ['$scope', '$attrs', '$http', '$window', '$rootScope', 'apiUrl', function ($scope, $attrs, $http, $window, $rootScope, apiUrl) {
+		controller: ['$scope', '$attrs', '$http', '$window', '$rootScope', 'urlHelper', function ($scope, $attrs, $http, $window, $rootScope, urlHelper) {
 			$scope.puntuations = [1,2,3,4,5];
 			$scope.val = 0;
-			$scope.url = $window.location.href;
+			$scope.url = urlHelper.normalizeUrl($window.location.href);
+
+			$scope.uri = urlHelper;
 
 			var refreshValorations = function(){
-				$http.post(apiUrl+'/api/publication', {publication:$scope.url}).success(function(data){
+				$http.post(urlHelper.apiUrl()+'/api/publication', {publication:$scope.url}, {withCredentials: true}).success(function(data){
 					if (data && data.publication) {
 						$scope.val = data.publication.user_val;
 					}
@@ -30,7 +32,7 @@ angular.module('xRankApp')
 			refreshValorations();
 			$scope.vote = function(){
 				if ($scope.url && $scope.val) {
-					$http.post(apiUrl+'/api/vote', {publication:$scope.url, val: $scope.val}).success(function(data){
+					$http.post(urlHelper.apiUrl()+'/api/vote', {publication:$scope.url, val: $scope.val}, {withCredentials: true}).success(function(data){
 						if (data && data.notice)
 							$rootScope.$broadcast('voted', {publication:$scope.url});
 					});

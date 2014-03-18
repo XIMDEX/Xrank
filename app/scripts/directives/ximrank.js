@@ -9,7 +9,7 @@ angular.module('xRankApp')
 		'</span>'+
 		'</span>',
 		restrict: 'E, A',
-		transclude: true,
+		transclude: 'element',
 		replace: true,
 		scope: {
 			anchorHref: '@href'
@@ -57,8 +57,10 @@ angular.module('xRankApp')
 
 		}],
 		link: function postLink(scope, element, attrs) {
-			if (element.context.href)
-				scope.publicationUrl = urlHelper.normalizeUrl(element.context.href);
+			var link = element.find('a')
+			if (link.length) 
+				if (link[0].href)
+					scope.publicationUrl = urlHelper.normalizeUrl(link[0].href);
 		}
 	};
 }]);

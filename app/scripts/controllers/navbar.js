@@ -13,15 +13,15 @@ angular.module('xRankApp')
   },
   {
     'title': 'Publication 2',
-    'link': '/pub_2'
+    'link': '/-ides-/pub_2'
   },
   {
-    'title': 'Publication 3',
-    'link': '/pub_3'
+    'title': 'Publication 3 EN',
+    'link': '/en/pub_3'
   },
   {
-    'title': 'Publication 4',
-    'link': '/pub_4'
+    'title': 'Publication 3 ES',
+    'link': '/es/pub_3'
   }
   ];
 

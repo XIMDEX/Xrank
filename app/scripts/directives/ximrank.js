@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('xRankApp')
-.directive('ximRank', function () {
+.directive('ximRank', ['urlHelper', function (urlHelper) {
 	return {
 		template: '<span><a href="{{anchorHref}}" ng-transclude ng-if="publicationUrl"></a><span class="xim-rank">'+
 			'<span ng-repeat="puntuation in puntuations" class="xim-rank-star xim-rank-{{puntuation}}" ng-class="{checked: checked(puntuation)}"></span>'+
@@ -14,13 +14,13 @@ angular.module('xRankApp')
 		scope: {
 			anchorHref: '@href'
 		},
-		controller: ['$scope', '$attrs', '$http', '$window','urlHelper', function ($scope, $attrs, $http, $window,urlHelper) {
+		controller: ['$scope', '$attrs', '$http', '$window', function ($scope, $attrs, $http, $window) {
 			$scope.puntuations = [];
 			for (var i=1; i<=5; i+=0.5) {
 				$scope.puntuations.push(i);
 			}
 			var refreshValorations = function(publication){
-				$http.post(urlHelper.apiUrl()+'/api/publication', {publication:urlHelper.normalizeUrl(publication)}).success(function(data){
+				$http.post(urlHelper.apiUrl()+'/api/publication', {publication: publication}).success(function(data){
 					if (data && data.publication) {
 						$scope.average = parseFloat(data.publication.average);
 						$scope.count = data.publication.count;
@@ -32,7 +32,7 @@ angular.module('xRankApp')
 					refreshValorations(newVal);
 			});
 			if (!$attrs.href) {    
-				$scope.publicationUrl = $window.location.href;
+				$scope.publicationUrl = urlHelper.normalizeUrl($window.location.href);
 			}
 			$scope.$on('voted', function(event, data){
 				if (data.publication === $scope.publicationUrl)
@@ -58,7 +58,7 @@ angular.module('xRankApp')
 		}],
 		link: function postLink(scope, element, attrs) {
 			if (element.context.href)
-				scope.publicationUrl = element.context.href;
+				scope.publicationUrl = urlHelper.normalizeUrl(element.context.href);
 		}
 	};
-});
+}]);

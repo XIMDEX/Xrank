@@ -12,11 +12,11 @@ angular.module('xRankApp', [
         templateUrl: 'partials/main'
       }).when('/pub_1', {
         templateUrl: 'partials/publication'
-      }).when('/pub_2', {
+      }).when('/-ides-/pub_2', {
         templateUrl: 'partials/publication'
-      }).when('/pub_3', {
+      }).when('/en/pub_3', {
         templateUrl: 'partials/publication'
-      }).when('/pub_4', {
+      }).when('/es/pub_3', {
         templateUrl: 'partials/publication'
       }).otherwise({
         redirectTo: '/'

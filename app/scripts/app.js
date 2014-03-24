@@ -1,9 +1,6 @@
 'use strict';
 
 angular.module('xRankApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
   'ngRoute'
 ])
   .config(function ($routeProvider, $locationProvider) {

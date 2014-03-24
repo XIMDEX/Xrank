@@ -1,173 +1,203 @@
-$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+// $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
-@import 'sass-bootstrap/lib/bootstrap';
+// @import 'sass-bootstrap/lib/bootstrap';
 
-.browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-}
+// .browsehappy {
+//     margin: 0.2em 0;
+//     background: #ccc;
+//     color: #000;
+//     padding: 0.2em 0;
+// }
 
-/* Space out content a bit */
-body {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
+// /* Space out content a bit */
+// body {
+//     padding-top: 20px;
+//     padding-bottom: 20px;
+// }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-    padding-left: 15px;
-    padding-right: 15px;
-}
+// /* Everything but the jumbotron gets side spacing for mobile first views */
+// .header,
+// .marketing,
+// .footer {
+//     padding-left: 15px;
+//     padding-right: 15px;
+// }
 
-/* Custom page header */
-.header {
-    border-bottom: 1px solid #e5e5e5;
-}
+// /* Custom page header */
+// .header {
+//     border-bottom: 1px solid #e5e5e5;
+// }
 
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-}
+// /* Make the masthead heading the same height as the navigation */
+// .header h3 {
+//     margin-top: 0;
+//     margin-bottom: 0;
+//     line-height: 40px;
+//     padding-bottom: 19px;
+// }
 
-/* Custom page footer */
-.footer {
-    padding-top: 19px;
-    color: #777;
-    border-top: 1px solid #e5e5e5;
-}
+// /* Custom page footer */
+// .footer {
+//     padding-top: 19px;
+//     color: #777;
+//     border-top: 1px solid #e5e5e5;
+// }
 
-.container-narrow > hr {
-    margin: 30px 0;
-}
+// .container-narrow > hr {
+//     margin: 30px 0;
+// }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-    text-align: center;
-    border-bottom: 1px solid #e5e5e5;
-}
+// /* Main marketing message and sign up button */
+// .jumbotron {
+//     text-align: center;
+//     border-bottom: 1px solid #e5e5e5;
+// }
 
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-}
+// .jumbotron .btn {
+//     font-size: 21px;
+//     padding: 14px 24px;
+// }
 
-/* Supporting marketing content */
-.marketing {
-    margin: 40px 0;
-}
+// /* Supporting marketing content */
+// .marketing {
+//     margin: 40px 0;
+// }
 
-.marketing p + h4 {
-    margin-top: 28px;
-}
+// .marketing p + h4 {
+//     margin-top: 28px;
+// }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-    .container {
-        max-width: 730px;
-    }
+// /* Responsive: Portrait tablets and up */
+// @media screen and (min-width: 768px) {
+//     .container {
+//         max-width: 730px;
+//     }
 
-    /* Remove the padding we set earlier */
-    .header,
-    .marketing,
-    .footer {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    /* Space out the masthead */
-    .header {
-        margin-bottom: 30px;
-    }
-    /* Remove the bottom border on the jumbotron for visual effect */
-    .jumbotron {
-        border-bottom: 0;
-    }
-}
+//     /* Remove the padding we set earlier */
+//     .header,
+//     .marketing,
+//     .footer {
+//         padding-left: 0;
+//         padding-right: 0;
+//     }
+//     /* Space out the masthead */
+//     .header {
+//         margin-bottom: 30px;
+//     }
+//     /* Remove the bottom border on the jumbotron for visual effect */
+//     .jumbotron {
+//         border-bottom: 0;
+//     }
+// }
 //xim rank
-span.xim-rank {
-    display: inline-block;
-    vertical-align: middle;
+
+$vote_color: #f70;
+$hover_color: gold;
+$pristine_color: lighten(gray, 30%);
+
+// @font-face {
+//     font-family: 'xrank';
+//     src: url(data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMggi/LgAAAC8AAAAYGNtYXAaVcxZAAABHAAAAExnYXNwAAAAEAAAAWgAAAAIZ2x5Zhp3EI8AAAFwAAABBGhlYWT/u4gIAAACdAAAADZoaGVhA+IB6AAAAqwAAAAkaG10eAcAAD4AAALQAAAAHGxvY2EAhgDKAAAC7AAAABBtYXhwAAoAGAAAAvwAAAAgbmFtZeF8A9cAAAMcAAABJ3Bvc3QAAwAAAAAERAAAACAAAwIAAZAABQAAAUwBZgAAAEcBTAFmAAAA9QAZAIQAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADmAgHg/+D/4AHgACAAAAABAAAAAAAAAAAAAAAgAAAAAAACAAAAAwAAABQAAwABAAAAFAAEADgAAAAKAAgAAgACAAEAIOYC//3//wAAAAAAIOYA//3//wAB/+MaBAADAAEAAAAAAAAAAAAAAAEAAf//AA8AAQAAAAAAAAAAAAIAADc5AQAAAAABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAQAfAAIB4QHEAAkAAAEXMwcXJwc3JzMBAD2khjCLizCGpAHErGWxamqxZQACAB8ABQHhAcgACgAVAAABIycHIxcHNxcnNw8BNycXNxc3BxcnAeGkPT2khjCLizCG4U0gSVocHFpJIE0BHKysZbJqarJlekBbOwNoaAM7W0AAAAACAAD/5wIAAeYACgARAAABIycHIxcHNxcnNycXNwcXJzcCALpGRLyZN5+dNZf/H2dUJVgBASPDw3PJeHjJc0p2A0NnSNUAAAABAAAAAQAA6v1K8F8PPPUACwIAAAAAAM9OI58AAAAAz04jnwAA/+cCAAHmAAAACAACAAAAAAAAAAEAAAHg/+AAAAIAAAAAAAIAAAEAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAQAAAAIAAB8CAAAfAgAAAAAAAAAACgAUAB4ANABeAIIAAQAAAAcAFgACAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA4ArgABAAAAAAABAAoAAAABAAAAAAACAA4AOQABAAAAAAADAAoAIAABAAAAAAAEAAoARwABAAAAAAAFABYACgABAAAAAAAGAAUAKgABAAAAAAAKACgAUQADAAEECQABAAoAAAADAAEECQACAA4AOQADAAEECQADAAoAIAADAAEECQAEAAoARwADAAEECQAFABYACgADAAEECQAGAAoALwADAAEECQAKACgAUQB4AHIAYQBuAGsAVgBlAHIAcwBpAG8AbgAgADEALgAwAHgAcgBhAG4Aa3hyYW5rAHgAcgBhAG4AawBSAGUAZwB1AGwAYQByAHgAcgBhAG4AawBHAGUAbgBlAHIAYQB0AGUAZAAgAGIAeQAgAEkAYwBvAE0AbwBvAG4AAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=) format('truetype'),
+//          url(data:application/font-woff;charset=utf-8;base64,d09GRk9UVE8AAASwAAoAAAAABGgAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABDRkYgAAAA9AAAAT4AAAE+3qpypk9TLzIAAAI0AAAAYAAAAGAIIvy4Y21hcAAAApQAAABMAAAATBpVzFlnYXNwAAAC4AAAAAgAAAAIAAAAEGhlYWQAAALoAAAANgAAADb/u4gIaGhlYQAAAyAAAAAkAAAAJAPiAehobXR4AAADRAAAABwAAAAcBwAAPm1heHAAAANgAAAABgAAAAYAB1AAbmFtZQAAA2gAAAEnAAABJ+F8A9dwb3N0AAAEkAAAACAAAAAgAAMAAAEABAQAAQEBBnhyYW5rAAECAAEAOvgcAvgbA/gYBB4KABlT/4uLHgoAGVP/i4sMB4tr+JT4egUdAAAAfA8dAAAAgREdAAAACR0AAAE1EgAIAQEGCw0PEhccIXhyYW5reHJhbmt1MHUxdTIwdUU2MDB1RTYwMXVFNjAyAAACAYkABQAHAQEEBwoNL26q/JQO/JQO/JQO+5QO95T4WBXI+0D3OIv7Gia7+0X7H/X7HyG790X7GvD3OIsFDvh197AV+ziLTvdATvtA+ziL9xomW/tG9x/19x8hW/dG9xrwBft1+w4VPkur5kLG5Yin86cj5Y5CUKswPssFDviU97cV+0+LRvdXRvtX+0+L9yz7B1X7Xfcy9wz3MvsMVfdd9yz3BwX7lNUVq/sK8Y44SK8kNNOL92kFDviUFPiUFYsMCgAAAAMCAAGQAAUAAAFMAWYAAABHAUwBZgAAAPUAGQCEAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAAAAAAAAAAAAAAQAAA5gIB4P/g/+AB4AAgAAAAAQAAAAAAAAAAAAAAIAAAAAAAAgAAAAMAAAAUAAMAAQAAABQABAA4AAAACgAIAAIAAgABACDmAv/9//8AAAAAACDmAP/9//8AAf/jGgQAAwABAAAAAAAAAAAAAAABAAH//wAPAAEAAAABAACk6ypWXw889QALAgAAAAAAz04jnwAAAADPTiOfAAD/5wIAAeYAAAAIAAIAAAAAAAAAAQAAAeD/4AAAAgAAAAAAAgAAAQAAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAABAAAAAgAAHwIAAB8CAAAAAABQAAAHAAAAAAAOAK4AAQAAAAAAAQAKAAAAAQAAAAAAAgAOADkAAQAAAAAAAwAKACAAAQAAAAAABAAKAEcAAQAAAAAABQAWAAoAAQAAAAAABgAFACoAAQAAAAAACgAoAFEAAwABBAkAAQAKAAAAAwABBAkAAgAOADkAAwABBAkAAwAKACAAAwABBAkABAAKAEcAAwABBAkABQAWAAoAAwABBAkABgAKAC8AAwABBAkACgAoAFEAeAByAGEAbgBrAFYAZQByAHMAaQBvAG4AIAAxAC4AMAB4AHIAYQBuAGt4cmFuawB4AHIAYQBuAGsAUgBlAGcAdQBsAGEAcgB4AHIAYQBuAGsARwBlAG4AZQByAGEAdABlAGQAIABiAHkAIABJAGMAbwBNAG8AbwBuAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA) format('woff');
+//     font-weight: normal;
+//     font-style: normal;
+// }
+// .xim-rank, .xim-ranker {
+//     .xim-rank-star {
+//         cursor: default;
+//         font-family: 'xrank';
+//         speak: none;
+//         font-style: normal;
+//         font-weight: normal;
+//         font-variant: normal;
+//         text-transform: none;
+//         line-height: 1;
+//         color: $vote_color;
+//         font-size: 20px;
+//         /* Better Font Rendering =========== */
+//         -webkit-font-smoothing: antialiased;
+//         -moz-osx-font-smoothing: grayscale;
+//     }
+
+//     .xim-rank-star:before {
+//         content: "\e601";
+//     }
+//     .xim-rank-star-half:before {
+//         content: "\e602";
+//     }
+//     .xim-rank-star-full:before {
+//         content: "\e600";
+//     }
+//     .xim-rank-average {
+//         margin-left: 4px;
+//     }
+// }
+
+
+@font-face {
+    font-family: 'xrank';
+    src: url(data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMggi/LgAAAC8AAAAYGNtYXAaVcxZAAABHAAAAExnYXNwAAAAEAAAAWgAAAAIZ2x5ZlNxiKoAAAFwAAABFGhlYWT/uyIFAAAChAAAADZoaGVhA+IB6AAAArwAAAAkaG10eAcAAAAAAALgAAAAHGxvY2EAmADoAAAC/AAAABBtYXhwAAoAGAAAAwwAAAAgbmFtZUQYtNYAAAMsAAABOXBvc3QAAwAAAAAEaAAAACAAAwIAAZAABQAAAUwBZgAAAEcBTAFmAAAA9QAZAIQAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADmAgHg/+D/4AHgACAAAAABAAAAAAAAAAAAAAAgAAAAAAACAAAAAwAAABQAAwABAAAAFAAEADgAAAAKAAgAAgACAAEAIOYC//3//wAAAAAAIOYA//3//wAB/+MaBAADAAEAAAAAAAAAAAAAAAEAAf//AA8AAQAAAAAAAAAAAAIAADc5AQAAAAABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAgAA/+0CAAHTAAoAFQAAAS8BDwEXBzcXJzcFBzcnPwEfAQcXJwIAsU9PsYAenp4egP8AcBZbfTg4fVsWcAEZGqCgGnywU1OwfLI6fFgScXESWHw6AAAAAAIAAP/tAgAB0wAKABIAAAEvAQ8BFwc3Fyc3BTERHwEHFycCALFPT7GAHp6eHoD/ADh9WxZwARkaoKAafLBTU7B8sgEdcRJYfDoAAAABAAD/7QIAAdMACgAAAS8BDwEXBzcXJzcCALFPT7GAHp6eHoABGRqgoBp8sFNTsHwAAAAAAQAAAAEAALOrxFxfDzz1AAsCAAAAAADPTfCkAAAAAM9N8KQAAP/tAgAB0wAAAAgAAgAAAAAAAAABAAAB4P/gAAACAAAAAAACAAABAAAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAAAEAAAACAAAAAgAAAAIAAAAAAAAAAAoAFAAeAEoAcACKAAEAAAAHABYAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAOAK4AAQAAAAAAAQAOAAAAAQAAAAAAAgAOAEcAAQAAAAAAAwAOACQAAQAAAAAABAAOAFUAAQAAAAAABQAWAA4AAQAAAAAABgAHADIAAQAAAAAACgAoAGMAAwABBAkAAQAOAAAAAwABBAkAAgAOAEcAAwABBAkAAwAOACQAAwABBAkABAAOAFUAAwABBAkABQAWAA4AAwABBAkABgAOADkAAwABBAkACgAoAGMAaQBjAG8AbQBvAG8AbgBWAGUAcgBzAGkAbwBuACAAMQAuADAAaQBjAG8AbQBvAG8Abmljb21vb24AaQBjAG8AbQBvAG8AbgBSAGUAZwB1AGwAYQByAGkAYwBvAG0AbwBvAG4ARwBlAG4AZQByAGEAdABlAGQAIABiAHkAIABJAGMAbwBNAG8AbwBuAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=) format('truetype'),
+         url(data:application/font-woff;charset=utf-8;base64,d09GRk9UVE8AAATcAAoAAAAABJQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABDRkYgAAAA9AAAAVcAAAFXp7epXU9TLzIAAAJMAAAAYAAAAGAIIvy4Y21hcAAAAqwAAABMAAAATBpVzFlnYXNwAAAC+AAAAAgAAAAIAAAAEGhlYWQAAAMAAAAANgAAADb/uyIFaGhlYQAAAzgAAAAkAAAAJAPiAehobXR4AAADXAAAABwAAAAcBwAAAG1heHAAAAN4AAAABgAAAAYAB1AAbmFtZQAAA4AAAAE5AAABOUQYtNZwb3N0AAAEvAAAACAAAAAgAAMAAAEABAQAAQEBCGljb21vb24AAQIAAQA6+BwC+BsD+BgEHgoAGVP/i4seCgAZU/+LiwwHi2v4lPh0BR0AAACCDx0AAACHER0AAAAJHQAAAU4SAAgBAQgPERMWGyAlaWNvbW9vbmljb21vb251MHUxdTIwdUU2MDB1RTYwMXVFNjAyAAACAYkABQAHAQEEBwoNVpa9/JQO/JQO/JQO+5QO+JT3rRX7RaU89zQ8+zT7RXH3FPsQbftE9zLe9zI4bfdE9xT3EAX7lPtGFfsEUaH3EDDj9xGdw/cFw/sF9xF5MDOh+xD7BMUFDviU960V+0WlPPc0PPs0+0Vx9xT7EG37RPcy3vcyOG33RPcU9xAF+5T7RhWLi4v3scP7BfcReTAzofsQ+wTFBQ74lPetFftFpTz3NDz7NPtFcfcU+xBt+0T3Mt73Mjht90T3FPcQBQ74lBT4lBWLDAoAAAMCAAGQAAUAAAFMAWYAAABHAUwBZgAAAPUAGQCEAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAAAAAAAAAAAAAAQAAA5gIB4P/g/+AB4AAgAAAAAQAAAAAAAAAAAAAAIAAAAAAAAgAAAAMAAAAUAAMAAQAAABQABAA4AAAACgAIAAIAAgABACDmAv/9//8AAAAAACDmAP/9//8AAf/jGgQAAwABAAAAAAAAAAAAAAABAAH//wAPAAEAAAABAABNmCZVXw889QALAgAAAAAAz03wpAAAAADPTfCkAAD/7QIAAdMAAAAIAAIAAAAAAAAAAQAAAeD/4AAAAgAAAAAAAgAAAQAAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAABAAAAAgAAAAIAAAACAAAAAABQAAAHAAAAAAAOAK4AAQAAAAAAAQAOAAAAAQAAAAAAAgAOAEcAAQAAAAAAAwAOACQAAQAAAAAABAAOAFUAAQAAAAAABQAWAA4AAQAAAAAABgAHADIAAQAAAAAACgAoAGMAAwABBAkAAQAOAAAAAwABBAkAAgAOAEcAAwABBAkAAwAOACQAAwABBAkABAAOAFUAAwABBAkABQAWAA4AAwABBAkABgAOADkAAwABBAkACgAoAGMAaQBjAG8AbQBvAG8AbgBWAGUAcgBzAGkAbwBuACAAMQAuADAAaQBjAG8AbQBvAG8Abmljb21vb24AaQBjAG8AbQBvAG8AbgBSAGUAZwB1AGwAYQByAGkAYwBvAG0AbwBvAG4ARwBlAG4AZQByAGEAdABlAGQAIABiAHkAIABJAGMAbwBNAG8AbwBuAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=) format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
-.xim-rank > span {
-    float:left;
-}
-.xim-rank .xim-rank-star{
-    width:22px;
-    padding:0 .1em;
-    overflow:hidden;
-    white-space:nowrap;
-    font-size:18px;
-    line-height:1.2;
-    color:#ddd;
-    &:before {
-        content: '★';   
+.xim-rank, .xim-ranker {
+    .xim-rank-star {
+        cursor: default;
+        font-family: 'xrank';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        color: $vote_color;
+        font-size: 16px;
+        margin: 0 1px;
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .xim-rank-star:before {
+        content: "\e600";
+    }
+    .xim-rank-star-half:before {
+        content: "\e601";
+    }
+    .xim-rank-star-full:before {
+        content: "\e602";
+    }
+    .xim-rank-average {
+        margin-left: 4px;
     }
 }
-.xim-rank .xim-rank-star:nth-child(odd) {
-  
-}
-.xim-rank .xim-rank-star:nth-child(even) {
-    position: absolute;
-    width: 11px;
-}
-/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
-   follow these rules. Every browser that supports :checked also supports :not(), so
-   it doesn’t make the test unnecessarily selective */
-.xim-rank > span:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-    clip:rect(0,0,0,0);
-}
 
-.xim-rank > span:not(:checked) > label {
-    float:right;
-    width:22px;
-    padding:0 .1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:18px;
-    line-height:1.2;
-    color:#ddd;
-    //text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
-}
-
-.xim-rank > span:not(:checked) > label:before {
-    content: '★ ';
-}
-
-.xim-rank > span > input:checked ~ label {
-    color: #f70;
-    //text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
-}
-
-.xim-rank > span:not(:checked) > label:hover,
-.xim-rank > span:not(:checked) > label:hover ~ label {
-    color: gold;
-    //text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
-}
-.xim-rank .checked {
-    color: gold!important;
-    //text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5)!important;
-}
-
-.xim-rank > span > input:checked + label:hover,
-.xim-rank > span > input:checked + label:hover ~ label,
-.xim-rank > span > input:checked ~ label:hover,
-.xim-rank > span > input:checked ~ label:hover ~ label,
-.xim-rank > span > label:hover ~ input:checked ~ label {
-    color: #ea0;
-    //text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
-}
-
-.xim-rank > span > label:active {
-    position:relative;
-    top:2px;
-    left:2px;
+.xim-ranker {
+    &.xim-rank-pristine {
+        .xim-rank-star:before {
+            content: "\e602";
+            color: $pristine_color;   
+        }    
+    }
+    .xim-rank-star-active:before {
+        content: "\e602";
+        color: $hover_color!important;
+    }
+    .xim-rank-star {
+        cursor: pointer;
+        -webkit-transition: all 0.2s; /* For Safari 3.1 to 6.0 */
+        transition: all 0.2s;
+        display: inline-block;
+        &:hover {
+            transform:scale(1.4);
+            -ms-transform:scale(1.4); /* IE 9 */
+            -webkit-transform:scale(1.4); /* Opera, Chrome, and Safari */    
+        }
+        &:active {
+            transform:scale(0.7);
+            -ms-transform:scale(0.7); /* IE 9 */
+            -webkit-transform:scale(0.7); /* Opera, Chrome, and Safari */
+        }
+    }
 }

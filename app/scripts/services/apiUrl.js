@@ -15,8 +15,12 @@ angular.module('xRankApp')
             },
             normalizeUrl: function(url){
                 if (pattern) {
-                    console.log("replacing", pattern);
-                    return url.replace(pattern, replacement || '');
+                    var match = pattern.exec(url);
+                    if (match) {
+                        return url.replace(match[1],replacement || '');
+                    } else {
+                        return url;
+                    }
                 } 
                 return url; 
             }

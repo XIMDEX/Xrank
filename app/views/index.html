@@ -50,11 +50,9 @@
     <script>
       angular.module('xRankApp')
         .config(function (urlHelperProvider) {
-          urlHelperProvider.setApiUrl('http://serene-mesa-8983.herokuapp.com');
-          // Removes /xx_XX/
-          urlHelperProvider.setUrlTrimPattern(/\/[a-z]{2}_[A-Z]{2}?(?=\/)/);
-          // Removes -idxx-
-          //urlHelperProvider.setUrlTrimPattern(/-id[a-zA-Z]{2}-/);
+          urlHelperProvider.setApiUrl('http://xfind.irmc.gob.es:9000');
+          // Removes /xx/ idomatic path
+          urlHelperProvider.setUrlTrimPattern(/(?:^http[s]?:\/\/.*?)(\/[a-z]{2}\/)/, '/xx/');
         });
     </script>
 </body>

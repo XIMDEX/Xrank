@@ -3,7 +3,7 @@
 angular.module('xRankApp')
 .directive('ximRanker', function () {
 	return {
-		template: '<fieldset class="xim-ranker" ng-class="{\'xim-rank-pristine\': !val}"><legend>Please Vote</legend>'+
+		template: '<fieldset class="xim-ranker" ng-class="{\'xim-rank-pristine\': !val}"><legend>{{\'Please vote\' | i18n}}</legend>'+
 		'<span  ng-mouseleave="tempVal = 0">'+
 		'<span ng-repeat="puntuation in puntuations" class="xim-rank-star" ng-mouseover="$parent.tempVal = puntuation" ng-class="{\'xim-rank-star-active\': tempVal && tempVal >= puntuation, \'xim-rank-star-full\': val >= puntuation}" ng-mousedown="vote(puntuation)"></span>'+
 		'</span>'+
@@ -31,9 +31,10 @@ angular.module('xRankApp')
 			$scope.vote = function(val){
 				if ($scope.url && val) {
 					$http.post(urlHelper.apiUrl()+'/api/vote', {publication:$scope.url, val: val}, {withCredentials: true}).success(function(data){
-						if (data && data.notice)
+						if (data && data.notice) {
 							$rootScope.$broadcast('voted', {publication:$scope.url});
 							$scope.val = val;
+						}
 					});
 				}
 			};

@@ -3,9 +3,9 @@
 angular.module('xRankApp')
   .provider('urlHelper', function() {
 
-    this.apiUrl = "http://localhost:9000";
+    this.apiUrl = 'http://localhost:9000';
 
-    this.$get = function() {
+    this.$get = function(hackCert) {
         var apiUrl = this.apiUrl;
         var pattern = this.pattern;
         var replacement = this.replacement;

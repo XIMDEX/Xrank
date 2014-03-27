@@ -18,7 +18,7 @@ angular.module('xRankApp')
 			$scope.puntuations = [1, 2, 3, 4, 5];
 
 			var refreshValorations = function(publication){
-				$http.post(urlHelper.apiUrl()+'/api/publication', {publication: publication}).success(function(data){
+				$http.jsonp(urlHelper.apiUrl()+'/api/publication?publication='+publication+'&callback=JSON_CALLBACK').success(function(data){
 					if (data && data.publication) {
 						$scope.average = parseFloat(data.publication.average);
 						$scope.count = data.publication.count;

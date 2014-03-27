@@ -21,7 +21,7 @@ angular.module('xRankApp')
 			$scope.url = urlHelper.normalizeUrl($window.location.href);
 
 			var refreshValorations = function(){
-				$http.post(urlHelper.apiUrl()+'/api/publication', {publication:$scope.url}, {withCredentials: true}).success(function(data){
+				$http.jsonp(urlHelper.apiUrl()+'/api/publication?publication='+$scope.url+'&callback=JSON_CALLBACK').success(function(data){
 					if (data && data.publication) {
 						$scope.val = data.publication.user_val;
 					}
@@ -30,7 +30,7 @@ angular.module('xRankApp')
 			refreshValorations();
 			$scope.vote = function(val){
 				if ($scope.url && val) {
-					$http.post(urlHelper.apiUrl()+'/api/vote', {publication:$scope.url, val: val}, {withCredentials: true}).success(function(data){
+					$http.jsonp(urlHelper.apiUrl()+'/api/vote?publication='+$scope.url+'&val='+val+'&callback=JSON_CALLBACK').success(function(data){
 						if (data && data.notice) {
 							$rootScope.$broadcast('voted', {publication:$scope.url});
 							$scope.val = val;

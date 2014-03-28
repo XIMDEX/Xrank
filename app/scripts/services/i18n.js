@@ -5,7 +5,7 @@ angular.module('xRankApp')
 
   	this.strings = {
   		es: {
-  			'Please vote': 'Valore este publicación',
+  			'Please vote': 'Valore este recurso',
   			'votes': 'votos'
   		}
   	}

@@ -6,6 +6,6 @@ angular.module('xRankApp')
 			$cookies.cert_accepted = 'true';
 		}
 		if (!$cookies.cert_accepted) {
-			$window.location.href = 'https://xfind.irmc.gob.es:8993/common/check_cert.php?origin_url='+window.location.href;
+			$window.location.href = 'https://xfind.irmc.gob.es:9000/cert?origin_url='+window.location.href;
 		}
 	}]);

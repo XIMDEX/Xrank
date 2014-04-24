@@ -3,9 +3,9 @@
 angular.module('xRankApp')
 .directive('ximRank', ['urlHelper', function (urlHelper) {
 	return {
-		template: '<span class="xim-rank"><span ng-transclude ng-show="anchorHref"></span><span>'+
+		template: '<span class="xim-rank" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><span ng-transclude ng-show="anchorHref" itemprop="url"></span><span>'+
 			'<span ng-repeat="puntuation in puntuations" class="xim-rank-star" ng-class="{\'xim-rank-star-full\': puntuation <= average, \'xim-rank-star-half\': puntuation > average && puntuation-1 < average}"></span>'+
-			'<span ng-if="count" class="xim-rank-average">{{average}} ({{count}} {{\'votes\' | i18n}})</span>'+
+			'<span ng-if="count" class="xim-rank-average"><span itemprop="ratingValue">{{average}}</span> (<span itemprop="reviewCount">{{count}}</span> {{\'votes\' | i18n}})</span>'+
 		'</span>'+
 		'</span>',
 		restrict: 'E, A',

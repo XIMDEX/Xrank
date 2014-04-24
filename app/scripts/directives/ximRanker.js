@@ -3,10 +3,12 @@
 angular.module('xRankApp')
 .directive('ximRanker', function () {
 	return {
-		template: '<fieldset class="xim-ranker" ng-class="{\'xim-rank-pristine\': !val}"><legend>{{\'Please vote\' | i18n}}</legend>'+
+		template: '<fieldset class="xim-ranker" ng-class="{\'xim-rank-pristine\': !val}" itemscope itemtype="http://schema.org/Rating"><legend>{{\'Please vote\' | i18n}}</legend>'+
 		'<span  ng-mouseleave="tempVal = 0">'+
 		'<span ng-repeat="puntuation in puntuations" class="xim-rank-star" ng-mouseover="$parent.tempVal = puntuation" ng-class="{\'xim-rank-star-active\': tempVal && tempVal >= puntuation, \'xim-rank-star-full\': val >= puntuation}" ng-mousedown="vote(puntuation)"></span>'+
 		'</span>'+
+		'<meta itemprop="ratingValue" content="{{val}}"></meta>'+
+		'<meta itemprop="url" content="{{url}}"></meta>'+
 		'<style>'+
 		'.xim-rank {};'+
 		'</style>'+
